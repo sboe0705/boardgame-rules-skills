@@ -1,0 +1,62 @@
+# Board Game Rules Skills
+
+A collection of AI **Agent Skills** that explain the rules of board games and answer rules questions, citing rulebook page numbers.
+
+Each skill holds a complete, structured transcription of a game's official rulebook, so an agent can answer from the skill without reading the PDF. Skills are written in English and answer in the language of whoever is asking, using the official terms of that language's edition.
+
+## Repository layout
+
+```
+<skill-name>/            one folder per skill (any top-level folder with a SKILL.md)
+├── SKILL.md             frontmatter (name, description) + answer instructions + overview
+└── references/          the rules, split into one Markdown file per topic
+install.sh               install / uninstall skills in your local skills directory
+build.sh                 validate and package all skills into dist/
+CLAUDE.md                instructions for creating new skills
+```
+
+To see which skills are included, run `./install.sh --list`.
+
+## Installing skills locally
+
+```bash
+./install.sh                          # interactive: pick skills from a list
+./install.sh <skill> [<skill>…]       # install specific skills
+./install.sh --all                    # install all skills
+./install.sh --uninstall [<skill>…]   # remove skills (interactive without names)
+./install.sh --list                   # list available skills
+```
+
+Options:
+
+| Option | Meaning |
+|---|---|
+| `-a`, `--all` | install or uninstall all skills of this repository |
+| `-u`, `--uninstall` | remove instead of install (only skills from this repository are ever removed) |
+| `-t`, `--target <dir>` | target directory (default: `$SKILLS_DIR` or `~/.claude/skills`) |
+| `-f`, `--force` | overwrite or remove without asking |
+
+The default target is the Claude Code user skills directory. Use `--target` for a project (`.claude/skills`) or for another agent's skills directory.
+
+## Building packages for other agents
+
+```bash
+./build.sh            # output in ./dist
+./build.sh -o <dir>   # custom output directory
+```
+
+`build.sh` first validates every skill (frontmatter, naming, referenced files) and then creates:
+
+- `dist/<skill>.zip`: one archive per skill, containing the skill folder. Upload it to claude.ai / Claude Desktop, use it with the Claude API, or give it to any agent that supports the Agent Skills format.
+- `dist/all-skills.zip`: all skills in one archive.
+- `dist/SHA256SUMS`: checksums.
+
+`dist/` is git-ignored.
+
+## Adding a skill for another game
+
+See [CLAUDE.md](CLAUDE.md) for the full workflow and conventions. In short: create a folder `explain-<game>/` with a `SKILL.md` and topic files under `references/`, transcribe the complete rulebook with page numbers, then run `./build.sh` to validate.
+
+## Disclaimer
+
+The skills are unofficial rules summaries for personal use. All games, names and rulebooks belong to their respective publishers; each skill links to the official rulebook PDFs.
