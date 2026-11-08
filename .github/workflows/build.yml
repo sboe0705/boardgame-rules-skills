@@ -10,20 +10,47 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  # Validate all skills once and list them for the package job.
+  validate:
     runs-on: ubuntu-latest
+    outputs:
+      skills: ${{ steps.list.outputs.skills }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install zip
         run: command -v zip || (sudo apt-get update && sudo apt-get install -y zip)
 
-      - name: Validate and package skills
+      - name: Validate skills
         run: ./build.sh
 
-      - name: Upload skill packages
-        uses: actions/upload-artifact@v4
+      - name: List skills
+        id: list
+        run: |
+          skills=$(for f in */SKILL.md; do dirname "$f"; done | jq -R . | jq -cs .)
+          echo "skills=$skills" >> "$GITHUB_OUTPUT"
+
+  # One job per skill, so each package is attached as its own artifact.
+  package:
+    needs: validate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        skill: ${{ fromJSON(needs.validate.outputs.skills) }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install zip
+        run: command -v zip || (sudo apt-get update && sudo apt-get install -y zip)
+
+      - name: Build packages
+        run: ./build.sh
+
+      # archive: false uploads the zip as-is (no extra zip around it);
+      # the artifact is named after the file, e.g. explain-my-game.zip
+      - name: Upload ${{ matrix.skill }}.zip
+        uses: actions/upload-artifact@v7
         with:
-          name: skills
-          path: dist/
+          path: dist/${{ matrix.skill }}.zip
+          archive: false
           if-no-files-found: error
