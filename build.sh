@@ -6,7 +6,6 @@
 #                          (format accepted by claude.ai / Claude Desktop skill upload,
 #                          the Claude API and other agents that support the
 #                          Agent Skills format: a folder with a SKILL.md)
-#   dist/all-skills.zip    all skill folders in one archive
 #   dist/SHA256SUMS        checksums of the archives
 #
 # Usage: ./build.sh [-o <output dir>]
@@ -20,7 +19,7 @@ die() { echo "Error: $*" >&2; exit 1; }
 while [[ $# -gt 0 ]]; do
   case "$1" in
     -o|--out) [[ $# -ge 2 ]] || die "--out needs a directory"; OUT_DIR="$2"; shift ;;
-    -h|--help) sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    -h|--help) sed -n '2,11p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *) die "unknown argument: $1" ;;
   esac
   shift
@@ -87,8 +86,6 @@ for s in "${SKILLS[@]}"; do
   zip -qrX "$OUT_DIR/$s.zip" "$s" "${EXCLUDES[@]}"
   echo "  $OUT_DIR/$s.zip"
 done
-zip -qrX "$OUT_DIR/all-skills.zip" "${SKILLS[@]}" "${EXCLUDES[@]}"
-echo "  $OUT_DIR/all-skills.zip"
 
 (cd "$OUT_DIR" && sha256sum ./*.zip > SHA256SUMS)
 echo "Done. Archives and checksums are in $OUT_DIR"

@@ -48,7 +48,6 @@ The default target is the Claude Code user skills directory. Use `--target` for 
 `build.sh` first validates every skill (frontmatter, naming, referenced files) and then creates:
 
 - `dist/<skill>.zip`: one archive per skill, containing the skill folder. Upload it to claude.ai / Claude Desktop, use it with the Claude API, or give it to any agent that supports the Agent Skills format.
-- `dist/all-skills.zip`: all skills in one archive.
 - `dist/SHA256SUMS`: checksums.
 
 `dist/` is git-ignored.
