@@ -56,6 +56,10 @@ The default target is the Claude Code user skills directory. Use `--target` for 
 
 See [CLAUDE.md](CLAUDE.md) for the full workflow and conventions. In short: create a folder `explain-<game>/` with a `SKILL.md` and topic files under `references/`, transcribe the complete rulebook with page numbers, then run `./build.sh` to validate.
 
+## Support
+
+If these skills are useful to you, you can support their development with a coffee: [buymeacoffee.com/sboe0705](https://buymeacoffee.com/sboe0705) ☕
+
 ## Disclaimer
 
 The skills are unofficial rules summaries for personal use. All games, names and rulebooks belong to their respective publishers; each skill links to the official rulebook PDFs.
