@@ -1,9 +1,10 @@
-# CLAUDE.md
+# AGENTS.md
 
 This repository holds AI Agent Skills that explain board game rules and answer rules questions. Each top-level folder with a `SKILL.md` is one skill. `install.sh` installs skills locally; `build.sh` validates and packages them (see README.md).
 
 ## Git workflow
 - **Always develop directly on the `main` branch.** Don't create feature branches or worktrees, and don't open pull requests, unless the user explicitly asks for one.
+- **Always commit changes to the `main` branch**, never to another branch.
 - Commit only when the user asks; push only when the user asks.
 
 ## Creating a skill for a new game

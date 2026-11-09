@@ -1,4 +1,4 @@
-# Board Game Rules Skills
+# AGENTS.md
 
 A collection of AI **Agent Skills** that explain the rules of board games and answer rules questions, citing rulebook page numbers.
 
@@ -17,7 +17,7 @@ install.sh               install / uninstall skills in your local skills directo
 build.sh                 validate and package all skills into dist/
 release.sh               tag and push a new release version (vX.Y.Z)
 .github/workflows/       CI build (build.yml) and GitHub release on tags (release.yml)
-CLAUDE.md                instructions for creating new skills
+AGENTS.md                instructions for creating new skills
 ```
 
 To see which skills are included, run `./install.sh --list`.
@@ -68,7 +68,7 @@ All skills are released together under one version `vX.Y.Z`. The script shows th
 
 ## Adding a skill for another game
 
-See [CLAUDE.md](CLAUDE.md) for the full workflow and conventions. In short: create a folder `explain-<game>/` with a `SKILL.md` and topic files under `references/`, transcribe the complete rulebook with page numbers, then run `./build.sh` to validate.
+See [AGENTS.md](AGENTS.md) for the full workflow and conventions. In short: create a folder `explain-<game>/` with a `SKILL.md` and topic files under `references/`, transcribe the complete rulebook with page numbers, then run `./build.sh` to validate.
 
 ## Support
 
