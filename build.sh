@@ -6,6 +6,7 @@
 #                          (format accepted by claude.ai / Claude Desktop skill upload,
 #                          the Claude API and other agents that support the
 #                          Agent Skills format: a folder with a SKILL.md)
+#                          plus the repository LICENSE as <skill>/LICENSE
 #   dist/SHA256SUMS        checksums of the archives
 #
 # Usage: ./build.sh [-o <output dir>]
@@ -26,11 +27,14 @@ while [[ $# -gt 0 ]]; do
 done
 
 command -v zip >/dev/null || die "'zip' is required (e.g. dnf install zip / apt install zip)"
+[[ -f "$REPO_DIR/LICENSE" ]] || die "LICENSE not found in $REPO_DIR"
 
 # --- validation --------------------------------------------------------------
 frontmatter_field() {
   # print the value of a top-level field from the YAML frontmatter of SKILL.md
-  sed -n '1{/^---$/!q};1,/^---$/{/^---$/d;p}' "$1" | sed -n "s/^$2: *//p" | head -n1
+  # (surrounding single or double quotes are removed, '' is unescaped)
+  sed -n '1{/^---$/!q};1,/^---$/{/^---$/d;p}' "$1" | sed -n "s/^$2: *//p" | head -n1 \
+    | sed -e "s/^'\(.*\)'\$/\1/" -e "s/''/'/g" -e 's/^"\(.*\)"$/\1/'
 }
 
 validate() {
@@ -46,6 +50,7 @@ validate() {
   if ! [[ "$skill" =~ ^[a-z0-9]+(-[a-z0-9]+)*$ ]] || [[ ${#skill} -gt 64 ]]; then
     echo "  $skill: name must be lowercase letters, digits and hyphens (max 64 chars)" >&2; errors=1
   fi
+  [[ -f "$REPO_DIR/$skill/NOTICE" ]] || { echo "  $skill: missing NOTICE file" >&2; errors=1; }
   if [[ -z "$desc" ]]; then
     echo "  $skill: missing 'description' in frontmatter" >&2; errors=1
   elif [[ ${#desc} -gt 1024 ]]; then
@@ -80,10 +85,16 @@ OUT_DIR="$(cd "$OUT_DIR" && pwd)"
 EXCLUDES=(-x '*.DS_Store' -x '*/.git*' -x '*~' -x '*.swp')
 
 echo "Packaging..."
+STAGE="$(mktemp -d)"
+trap 'rm -rf "$STAGE"' EXIT
 cd "$REPO_DIR"
 for s in "${SKILLS[@]}"; do
   # -X: no extra file attributes, so the archives are reproducible across machines
   zip -qrX "$OUT_DIR/$s.zip" "$s" "${EXCLUDES[@]}"
+  # add the repository LICENSE as <skill>/LICENSE without duplicating it in the repo
+  mkdir -p "$STAGE/$s"
+  cp -p "$REPO_DIR/LICENSE" "$STAGE/$s/LICENSE"   # -p keeps mtime: reproducible zips
+  (cd "$STAGE" && zip -qX "$OUT_DIR/$s.zip" "$s/LICENSE")
   echo "  $OUT_DIR/$s.zip"
 done
 

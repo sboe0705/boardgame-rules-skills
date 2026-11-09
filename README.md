@@ -8,8 +8,11 @@ Each skill holds a complete, structured transcription of a game's official ruleb
 
 ```
 <skill-name>/            one folder per skill (any top-level folder with a SKILL.md)
-├── SKILL.md             frontmatter (name, description) + answer instructions + overview
+├── SKILL.md             frontmatter (name, description, license, author) + answer instructions + overview
+├── NOTICE               copyright, license, source and support link (not read by the agent)
 └── references/          the rules, split into one Markdown file per topic
+.github/FUNDING.yml      sponsor button (Buy Me a Coffee)
+LICENSE                  Apache License 2.0 (added to every package and install)
 install.sh               install / uninstall skills in your local skills directory
 build.sh                 validate and package all skills into dist/
 CLAUDE.md                instructions for creating new skills
@@ -45,9 +48,9 @@ The default target is the Claude Code user skills directory. Use `--target` for 
 ./build.sh -o <dir>   # custom output directory
 ```
 
-`build.sh` first validates every skill (frontmatter, naming, referenced files) and then creates:
+`build.sh` first validates every skill (frontmatter, naming, NOTICE, referenced files) and then creates:
 
-- `dist/<skill>.zip`: one archive per skill, containing the skill folder. Upload it to claude.ai / Claude Desktop, use it with the Claude API, or give it to any agent that supports the Agent Skills format.
+- `dist/<skill>.zip`: one archive per skill, containing the skill folder plus the repository `LICENSE`. Upload it to claude.ai / Claude Desktop, use it with the Claude API, or give it to any agent that supports the Agent Skills format.
 - `dist/SHA256SUMS`: checksums.
 
 `dist/` is git-ignored.
@@ -63,3 +66,7 @@ If these skills are useful to you, you can support their development with a coff
 ## Disclaimer
 
 The skills are unofficial rules summaries for personal use. All games, names and rulebooks belong to their respective publishers; each skill links to the official rulebook PDFs.
+
+## License
+
+Copyright 2026 Sebastian Böhm. Licensed under the [Apache License 2.0](LICENSE).

@@ -61,7 +61,8 @@ skill_description() {
   # "description:" frontmatter field, word-wrapped to DESC_LINES lines of DESC_WIDTH,
   # with "..." if it had to be cut; each line is indented
   local desc
-  desc="$(sed -n '/^---$/,/^---$/{s/^description: *//p}' "$REPO_DIR/$1/SKILL.md" | head -n1)"
+  desc="$(sed -n '/^---$/,/^---$/{s/^description: *//p}' "$REPO_DIR/$1/SKILL.md" | head -n1 \
+    | sed -e "s/^'\(.*\)'\$/\1/" -e "s/''/'/g" -e 's/^"\(.*\)"$/\1/')"
   local -a lines
   mapfile -t lines < <(printf '%s\n' "$desc" | fold -s -w "$DESC_WIDTH")
   if [[ ${#lines[@]} -gt $DESC_LINES ]]; then
@@ -182,6 +183,7 @@ for s in "${SELECTED[@]}"; do
   # Copy into a temp dir first, then swap, so a failed copy never leaves a half-installed skill.
   tmp="$(mktemp -d "$TARGET_DIR/.${s}.XXXXXX")"
   cp -R "$REPO_DIR/$s/." "$tmp/"
+  [[ -f "$REPO_DIR/LICENSE" ]] && cp "$REPO_DIR/LICENSE" "$tmp/LICENSE"
   chmod "$(printf '%o' $((0777 & ~$(umask))))" "$tmp"   # mktemp creates 0700; use normal permissions
   rm -rf "$dest"
   mv "$tmp" "$dest"

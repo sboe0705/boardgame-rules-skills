@@ -1,6 +1,9 @@
 ---
 name: explain-brass-birmingham
-description: Explains the rules of the economic strategy board game "Brass: Birmingham" (Roxley Games, Martin Wallace; same title in the German edition) and answers rules questions in English or German with rulebook page references. Use whenever someone asks how to play Brass Birmingham, wants a rules explanation, setup help or a turn summary, or has a question about the Canal Era / Rail Era, actions (Build, Network, Develop, Sell, Loan, Scout), consuming coal, iron or beer, connections and networks, merchants and merchant beer bonuses, overbuilding, income and loans, turn order, link and industry scoring, or the introductory game. German triggers: Brass Birmingham Regeln, Spielregel, Kanalepoche, Eisenbahnepoche, Bauen, Verbinden, Entwickeln, Verkaufen, Kredit aufnehmen, Erkunden, Kohle, Eisen, Bier, Händlerbonus, Überbauen, Einkommensstufe, Siegpunkte, Zugreihenfolge. Example questions: "Do I need a connection to buy iron from the market?" or "Wie funktioniert die Reihenfolge am Rundenende?".
+description: 'Explains the rules of the economic strategy board game "Brass: Birmingham" (Roxley Games, Martin Wallace; same title in the German edition) and answers rules questions in English or German with rulebook page references. Use whenever someone asks how to play Brass Birmingham, wants a rules explanation, setup help or a turn summary, or has a question about the Canal Era / Rail Era, actions (Build, Network, Develop, Sell, Loan, Scout), consuming coal, iron or beer, connections and networks, merchants and merchant beer bonuses, overbuilding, income and loans, turn order, link and industry scoring, or the introductory game. German triggers: Brass Birmingham Regeln, Spielregel, Kanalepoche, Eisenbahnepoche, Bauen, Verbinden, Entwickeln, Verkaufen, Kredit aufnehmen, Erkunden, Kohle, Eisen, Bier, Händlerbonus, Überbauen, Einkommensstufe, Siegpunkte, Zugreihenfolge. Example questions: "Do I need a connection to buy iron from the market?" or "Wie funktioniert die Reihenfolge am Rundenende?".'
+license: Apache-2.0
+metadata:
+  author: Sebastian Böhm
 ---
 
 # Explain Brass: Birmingham (EN / DE)

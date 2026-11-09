@@ -1,6 +1,9 @@
 ---
 name: explain-stuffed-fables
-description: Explains the rules of the cooperative board game "Stuffed Fables" (German edition "Der Herr der Träume", Plaid Hat / Z-Man / Asmodee) and answers rules questions with rulebook page references. Use whenever someone asks how to play Stuffed Fables / Der Herr der Träume, wants a rules explanation, setup help or a turn summary, or has a question about stuffies/Stoffis, minions/Monster, dice colors, threat track/Bedrohungsleiste, surges, encounters, skill tests/Würfelproben, group tasks, items, sleep cards, collapsing, buttons and hearts, e.g. "How does the minion turn work?" or "Was passiert, wenn mein Stoffi keine Watte mehr hat?".
+description: 'Explains the rules of the cooperative board game "Stuffed Fables" (German edition "Der Herr der Träume", Plaid Hat / Z-Man / Asmodee) and answers rules questions with rulebook page references. Use whenever someone asks how to play Stuffed Fables / Der Herr der Träume, wants a rules explanation, setup help or a turn summary, or has a question about stuffies/Stoffis, minions/Monster, dice colors, threat track/Bedrohungsleiste, surges, encounters, skill tests/Würfelproben, group tasks, items, sleep cards, collapsing, buttons and hearts, e.g. "How does the minion turn work?" or "Was passiert, wenn mein Stoffi keine Watte mehr hat?".'
+license: Apache-2.0
+metadata:
+  author: Sebastian Böhm
 ---
 
 # Explain Stuffed Fables (Der Herr der Träume)

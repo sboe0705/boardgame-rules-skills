@@ -20,6 +20,7 @@ This repository holds AI Agent Skills that explain board game rules and answer r
 ```
 explain-<game>/
 ├── SKILL.md
+├── NOTICE                     # copyright, license, repo URL, support link (not read by the agent)
 └── references/
     ├── components.md          # object of the game, component list, card/board anatomy
     ├── setup.md               # game setup (and map/board/scenario setup if any)
@@ -30,9 +31,10 @@ explain-<game>/
 ```
 - Split files by rules area, following the rulebook's own chapters. Keep each file under about 300 lines.
 - Every file named in `SKILL.md` must exist; `build.sh` checks `references/*.md` paths.
+- `NOTICE` (required, `build.sh` checks it): copy one from an existing skill and change the skill name on the first line. Don't copy `LICENSE` into the skill folder; `build.sh` and `install.sh` add the repository `LICENSE` when packaging or installing.
 
 ### SKILL.md contents
-1. **Frontmatter**: `name` and a one-paragraph `description` (max 1024 chars). Say what the skill does, name the game in every edition's title, and list trigger topics and keywords in each supported language, plus one or two example questions.
+1. **Frontmatter**: `name`, a one-paragraph `description` (max 1024 chars, in single quotes so colons in game titles stay valid YAML; write `'` as `''`), `license: Apache-2.0` and `metadata:` with `author: Sebastian Böhm`. No links in `metadata`. Say what the skill does, name the game in every edition's title, and list trigger topics and keywords in each supported language, plus one or two example questions.
 2. **How to answer**:
    - Answer in the asker's language; in a localized language use that edition's official terms (from the terminology file).
    - Read the matching reference file(s) before answering; answer only from them.
@@ -69,6 +71,9 @@ explain-<game>/
 - [ ] Terminology table covers components, actions, turn steps, card/character names shown in the rulebook.
 - [ ] `./build.sh` passes.
 - [ ] Test questions answered from the skill alone (no PDF) in each supported language: a setup question, a turn-structure question, an edge case, a "what happens when…" question, and "explain the game to new players". Answers must be correct, in the asker's language, and cite pages.
+
+### Support link
+- The Buy Me a Coffee link appears only in `NOTICE`, `README.md` and `.github/FUNDING.yml`. Never put it (or other donation links) in text the agent reads: `SKILL.md` frontmatter and body, `references/`. Otherwise it lands in the agent's context and may be shown to users.
 
 ## Scripts
 - `./build.sh` validates all skills and writes zips to `dist/` (git-ignored). Run it after every skill change.
