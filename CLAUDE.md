@@ -77,4 +77,5 @@ explain-<game>/
 
 ## Scripts
 - `./build.sh` validates all skills and writes zips to `dist/` (git-ignored). Run it after every skill change.
+- `./release.sh` tags and pushes a release `vX.Y.Z` of all skills; `.github/workflows/release.yml` then publishes the zips. Run it only when the user asks.
 - `./install.sh` copies skills to `~/.claude/skills` (or `--target`). It discovers skills automatically, so new skills need no script changes.

@@ -15,6 +15,8 @@ Each skill holds a complete, structured transcription of a game's official ruleb
 LICENSE                  Apache License 2.0 (added to every package and install)
 install.sh               install / uninstall skills in your local skills directory
 build.sh                 validate and package all skills into dist/
+release.sh               tag and push a new release version (vX.Y.Z)
+.github/workflows/       CI build (build.yml) and GitHub release on tags (release.yml)
 CLAUDE.md                instructions for creating new skills
 ```
 
@@ -54,6 +56,15 @@ The default target is the Claude Code user skills directory. Use `--target` for 
 - `dist/SHA256SUMS`: checksums.
 
 `dist/` is git-ignored.
+
+## Releasing
+
+```bash
+./release.sh              # suggests the next version, builds, tags and pushes
+./release.sh --dry-run    # show what would happen, change nothing
+```
+
+All skills are released together under one version `vX.Y.Z`. The script shows the latest release and the commits since then and suggests the next version (`BREAKING` in a commit message → major; a subject starting with "Add" or "Remove", e.g. a new skill → minor; otherwise patch). It runs `./build.sh`, then creates an annotated tag on `main` and pushes it. The tag triggers `.github/workflows/release.yml`, which publishes a GitHub release with one zip per skill and `SHA256SUMS`. Options: `--version X.Y.Z`, `--yes`, `--skip-build`, `--dry-run`, `--help`.
 
 ## Adding a skill for another game
 
