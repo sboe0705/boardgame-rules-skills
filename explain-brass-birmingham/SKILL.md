@@ -1,6 +1,6 @@
 ---
 name: explain-brass-birmingham
-description: 'Explains the rules of the economic strategy board game "Brass: Birmingham" (Roxley Games, Martin Wallace; same title in the German edition) and answers rules questions in English or German with rulebook page references. Use whenever someone asks how to play Brass Birmingham, wants a rules explanation, setup help or a turn summary, or has a question about the Canal Era / Rail Era, actions (Build, Network, Develop, Sell, Loan, Scout), consuming coal, iron or beer, connections and networks, merchants and merchant beer bonuses, overbuilding, income and loans, turn order, link and industry scoring, or the introductory game. German triggers: Brass Birmingham Regeln, Spielregel, Kanalepoche, Eisenbahnepoche, Bauen, Verbinden, Entwickeln, Verkaufen, Kredit aufnehmen, Erkunden, Kohle, Eisen, Bier, Händlerbonus, Überbauen, Einkommensstufe, Siegpunkte, Zugreihenfolge. Example questions: "Do I need a connection to buy iron from the market?" or "Wie funktioniert die Reihenfolge am Rundenende?".'
+description: 'Explains the rules of the economic strategy board game "Brass: Birmingham" (Roxley Games, Martin Wallace; same title in the German edition) and answers rules questions in English or German with page references. Use whenever someone asks how to play Brass Birmingham, wants a rules explanation, setup help or a turn summary, or asks about the Canal Era / Rail Era, actions (Build, Network, Develop, Sell, Loan, Scout), consuming coal, iron or beer, connections and networks, merchants and their beer bonuses, overbuilding, income and loans, turn order, link and industry scoring, or the introductory game. German triggers: Brass Birmingham Regeln, Kanalepoche, Eisenbahnepoche, Bauen, Verbinden, Entwickeln, Verkaufen, Kredit, Erkunden, Bier, Händlerbonus, Überbauen, Einkommensstufe, Zugreihenfolge. Gives strategy tips only when explicitly asked (strategy, how to win; Strategie, Gewinntipps). Example questions: "Do I need a connection to buy iron from the market?" or "Wie funktioniert die Reihenfolge am Rundenende?".'
 license: Apache-2.0
 metadata:
   author: Sebastian Böhm
@@ -21,7 +21,9 @@ This skill holds the complete rules of *Brass: Birmingham* in `references/`, tra
    - *Single rules question:* short, direct answer, then the details/edge cases, then page reference(s).
    - *Teach the game / full explanation:* follow the "Teaching order" below; keep it concrete, use a sample turn.
    - *Quick reference / summary:* the quick overview + action list in compact form.
+   - *Strategy advice:* see rule 7.
    - *Setup help:* walk through Board Setup and Player Area Setup with the player count filled in (removed cards/Merchants, empty Merchant locations, rounds per era).
+7. **Strategy only on explicit request:** `references/strategy.md` holds unofficial community strategy advice, not rules. Read and use it **only** when the person explicitly asks for strategy, tactics, winning tips, opening moves or how to play better (DE: Strategie, Taktik, Gewinnstrategie, "Wie gewinne ich?"). Never add strategy advice unasked to a rules answer, setup help, quick reference or full teach, and don't offer it on your own. When you do give it, say that it is community advice and not part of the rules, keep rule facts and advice apart, and name the source links from that file if asked.
 
 ## Reference files
 
@@ -35,6 +37,7 @@ This skill holds the complete rules of *Brass: Birmingham* in `references/`, tra
 | `references/actions-build.md` | Build action, moving coal/iron to the Market, building with no tiles on the board, Farm Breweries, Canal/Rail Era building, Overbuilding | p. 9–10 |
 | `references/actions-other.md` | Sell (with Merchant beer bonuses), Loan, Scout, Develop (lightbulb Potteries), Network (canal/rail) | p. 10–11 |
 | `references/tips-variants.md` | Things to remember, beginner tips, introductory game (Canal Era only) | p. 12 |
+| `references/strategy.md` | **Only on explicit request (rule 7):** unofficial community strategy advice: core principles, loans, turn order, beer, industries, Canal/Rail Era play, player count, cards, common mistakes, with source tags | – (not in the rulebook) |
 | `references/terminology-en-de.md` | English ↔ German term table (headings, components, industries, game terms, actions) | – |
 
 ## Quick overview (for orientation; details are in the references)
@@ -67,5 +70,6 @@ This skill holds the complete rules of *Brass: Birmingham* in `references/`, tra
 - Latest rulebook (Roxley "living document" page): https://roxley.com/brass-birmingham-rulebook
 - Product page: https://roxley.com/products/brass-birmingham
 - Video tutorials: https://roxley.com/brass-tutorial
+- Strategy sources (unofficial community guides): listed at the end of `references/strategy.md`
 
 If a player wants to check the original text, give them the page number and the PDF link for their language.
