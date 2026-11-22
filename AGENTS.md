@@ -21,7 +21,7 @@ This repository holds AI Agent Skills that explain board game rules and answer r
 ```
 explain-<game>/
 ├── SKILL.md
-├── NOTICE                     # copyright, license, repo URL, support link (not read by the agent)
+├── NOTICE                     # copyright, license, repo URL (not read by the agent)
 └── references/
     ├── components.md          # object of the game, component list, card/board anatomy
     ├── setup.md               # game setup (and map/board/scenario setup if any)
@@ -72,9 +72,6 @@ explain-<game>/
 - [ ] Terminology table covers components, actions, turn steps, card/character names shown in the rulebook.
 - [ ] `./build.sh` passes.
 - [ ] Test questions answered from the skill alone (no PDF) in each supported language: a setup question, a turn-structure question, an edge case, a "what happens when…" question, and "explain the game to new players". Answers must be correct, in the asker's language, and cite pages.
-
-### Support link
-- The Buy Me a Coffee link appears only in `NOTICE`, `README.md` and `.github/FUNDING.yml`. Never put it (or other donation links) in text the agent reads: `SKILL.md` frontmatter and body, `references/`. Otherwise it lands in the agent's context and may be shown to users.
 
 ## Scripts
 - `./build.sh` validates all skills and writes zips to `dist/` (git-ignored). Run it after every skill change.

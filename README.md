@@ -9,9 +9,8 @@ Each skill holds a complete, structured transcription of a game's official ruleb
 ```
 <skill-name>/            one folder per skill (any top-level folder with a SKILL.md)
 ├── SKILL.md             frontmatter (name, description, license, author) + answer instructions + overview
-├── NOTICE               copyright, license, source and support link (not read by the agent)
+├── NOTICE               copyright, license and source (not read by the agent)
 └── references/          the rules, split into one Markdown file per topic
-.github/FUNDING.yml      sponsor button (Buy Me a Coffee)
 LICENSE                  Apache License 2.0 (added to every package and install)
 install.sh               install / uninstall skills in your local skills directory
 build.sh                 validate and package all skills into dist/
@@ -69,10 +68,6 @@ All skills are released together under one version `vX.Y.Z`. The script shows th
 ## Adding a skill for another game
 
 See [AGENTS.md](AGENTS.md) for the full workflow and conventions. In short: create a folder `explain-<game>/` with a `SKILL.md` and topic files under `references/`, transcribe the complete rulebook with page numbers, then run `./build.sh` to validate.
-
-## Support
-
-If these skills are useful to you, you can support their development with a coffee: [buymeacoffee.com/sboe0705](https://buymeacoffee.com/sboe0705) ☕
 
 ## Disclaimer
 
